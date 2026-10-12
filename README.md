@@ -10,7 +10,7 @@ Bitácora de desarrollo: registra qué construiste en cada proyecto, cuánto te 
 - **Login sin contraseña** con magic link de Supabase Auth.
 - **Proyectos**: nombre, slug, descripción, URL del repo y estado (`active`, `paused`, `done`).
 - **Entradas ("ships")**: título, cuerpo, tipo (`feature`, `bugfix`, `refactor`, `other`), tags, fecha de envío, tokens consumidos y costo en USD.
-- **Timeline semanal** por proyecto, agrupada por semana ISO 8601 (lunes a domingo), con el total invertido.
+- **Timeline semanal** por proyecto, agrupada por semana ISO 8601 (lunes a domingo), con el número de entradas por semana y el total invertido del proyecto (tokens y USD).
 - **Multiusuario**: cada usuario solo ve sus proyectos, garantizado con Row Level Security (RLS) en Postgres.
 
 Pendiente (ver fases en `plan.md`): páginas públicas compartibles `/p/[slug]`, integración con GitHub y recordatorios por email.
@@ -51,7 +51,7 @@ Login por magic link: escribe un correo en `/login` y abre el enlace en Mailpit 
 
 ## Variables de entorno y perfiles
 
-Hay dos perfiles; cada script de npm carga el suyo con `dotenv-cli`:
+Hay dos perfiles; los scripts `dev` y `build` cargan el suyo con `dotenv-cli` (`npm run start` no carga ninguno y sirve el build ya generado):
 
 | Perfil | Archivo | Scripts | Backend |
 |---|---|---|---|
